@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "SunriseShowroom\Backend.csproj", "{05F0FCAE-56A2-4BCC-9D19-2CC79EE43DFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{05F0FCAE-56A2-4BCC-9D19-2CC79EE43DFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{4A0CAC92-60FD-47BA-B6AA-F7901E47DC61}"
 EndProject
