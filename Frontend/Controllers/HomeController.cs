@@ -13,20 +13,20 @@ namespace Frontend.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            ViewBag.Message = "Home Showroom car";
 
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
+        //public ActionResult About()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult List()
-        {
-            var list = rep.GetProductCatelogueList();
-            return View(list);
-        }
+        //public ActionResult List()
+        //{
+        //    var list = rep.GetProductCatelogueList();
+        //    return View(list);
+        //}
     }
 }
