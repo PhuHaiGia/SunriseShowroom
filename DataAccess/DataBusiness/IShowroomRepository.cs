@@ -10,11 +10,11 @@ namespace Showroom.Models.DataBusiness
     {
         void Dispose();
 
-        List<Catelogue> GetProductCatelogueList();
-        Catelogue GetProductCatelogueInfo(int id);
-        bool InsertProductCatelogue(Catelogue item);
-        bool UpdateProductCatelogue(Catelogue item);
-        bool DeleteProductCatelogue(int Id);
+        List<Catalogue> GetProductCatalogueList();
+        Catalogue GetProductCatalogueInfo(int id);
+        bool InsertProductCatalogue(Catalogue item);
+        bool UpdateProductCatalogue(Catalogue item);
+        bool DeleteProductCatalogue(int Id);
 
     }
 }
