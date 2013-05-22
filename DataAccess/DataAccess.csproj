@@ -43,6 +43,14 @@
   <ItemGroup>
     <Compile Include="DataAccess\Product.cs" />
     <Compile Include="DataAccess\Example.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DataAccess\Catalogue.cs" />
+    <Compile Include="DataAccess\Contact.cs" />
+    <Compile Include="DataAccess\News.cs" />
+    <Compile Include="DataAccess\NewsCatalogue.cs" />
+    <Compile Include="DataAccess\Property.cs" />
+    <Compile Include="DataAccess\PropertyCatalogue.cs" />
+    <Compile Include="DataAccess\PropertySubCatalogue.cs" />
     <Compile Include="DataAccess\ShowroomRepository.cs" />
     <Compile Include="DataBusiness\IShowroomRepository.cs" />
     <Compile Include="ExtensionMethod.cs" />
