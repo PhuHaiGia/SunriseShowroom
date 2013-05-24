@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
+using Frontend.Models;
 
 namespace Frontend.Controllers
 {
@@ -14,7 +15,15 @@ namespace Frontend.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Home Showroom car";
-
+            var list = rep.GetProductCatalogueList();
+            ViewBag.CatalogueList = (from p in list
+                                     select new SelectListItem
+                                     {
+                                         Value=p.Id.ToString(),
+                                         Text=p.Name,
+                                     }).ToList();
+            //model.listCatalogue = rep
+            ViewBag.ProductList = rep.GetProductsList();
             return View();
         }
 

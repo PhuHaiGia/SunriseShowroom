@@ -1,13 +1,11 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="boderB">
     <!-- SLIDE -->
     @Html.Partial("~/Views/Shared/_Slide.cshtml");
     <!-- END SLIDE -->
-
 
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
@@ -21,12 +19,7 @@
                     </div>
                     <ul class="searchtool hide" id="searchtool">
                         <li>
-                            <select>
-                                <option>-Hãng xe-</option>
-                                <option>Kia  </option>
-                                <option>Audi</option>
-                                <option>Lexus</option>
-                            </select>
+                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueList)
                         </li>
                         <li>
                             <select>
@@ -64,120 +57,27 @@
 
             <!-----------------------XE MỚI CẬP NHẬT--------------------------->
             <div class="row" id="boxNewProduct">
-                <div class="span3">
-                    <div class="shadow-wrapper">
-                        <div class="mosaic-block faded">
-                            <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                <div class="zoom-icons">
-                                    <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                    <a class="link-img" href="/Product/Details"><i class="icon-link"></i></a>
+                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="/Product/Details"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/kia.jpg" alt="">
                                 </div>
                             </div>
-                            <div class="mosaic-backdrop">
-                                <img class="max-image" src="images/portfolio/kia.jpg" alt="">
+                            <div class="port3-head">
+                                <h3><a href="/Product/Details">@m.Name</a></h3>
+                                <p>Giá:10.000 $</p>
                             </div>
-                        </div>
-                        <div class="port3-head">
-                            <h3><a href="/Product/Details">Xe Kia -FLS</a></h3>
-                            <p>Giá:10.000 $</p>
                         </div>
                     </div>
-                </div>
-                <div class="span3">
-                    <div class="shadow-wrapper">
-                        <div class="mosaic-block faded">
-                            <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                <div class="zoom-icons">
-                                    <a class="zoom-img" href="images/portfolio/mazda.png" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                    <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img class="max-image" src="images/portfolio/mazda.png" alt="">
-                            </div>
-                        </div>
-                        <div class="port3-head">
-                            <h3><a href="#">Xe Mazda</a></h3>
-                            <p>Giá:15.000 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="span3">
-                    <div class="shadow-wrapper">
-                        <div class="mosaic-block faded">
-                            <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                <div class="zoom-icons">
-                                    <a class="zoom-img" href="images/portfolio/hyundai.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                    <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img class="max-image" src="images/portfolio/hyundai.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="port3-head">
-                            <h3><a href="#">Hyndai Tubo</a></h3>
-                            <p>Giá:25.000 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="span3">
-                    <div class="shadow-wrapper">
-                        <div class="mosaic-block faded">
-                            <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                <div class="zoom-icons">
-                                    <a class="zoom-img" href="images/portfolio/daiwo.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                    <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img class="max-image" src="images/portfolio/daiwo.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="port3-head">
-                            <h3><a href="#">Daewoo KS</a></h3>
-                            <p>Giá:25.000 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="span3">
-                    <div class="shadow-wrapper">
-                        <div class="mosaic-block faded">
-                            <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                <div class="zoom-icons">
-                                    <a class="zoom-img" href="images/portfolio/hyundai.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                    <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img class="max-image" src="images/portfolio/hyundai.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="port3-head">
-                            <h3><a href="#">Hyundai F1</a></h3>
-                            <p>Giá:25.000 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="span3">
-                    <div class="shadow-wrapper">
-                        <div class="mosaic-block faded">
-                            <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                <div class="zoom-icons">
-                                    <a class="zoom-img" href="images/portfolio/mazda.png" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                    <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img class="max-image" src="images/portfolio/mazda.png" alt="">
-                            </div>
-                        </div>
-                        <div class="port3-head">
-                            <h3><a href="#">Hyundai F1</a></h3>
-                            <p>Giá:25.000 $</p>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
 

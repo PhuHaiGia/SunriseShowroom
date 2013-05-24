@@ -162,7 +162,7 @@ namespace Showroom.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.Catelogue")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.Catalogue")]
 	public partial class Catalogue : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -326,7 +326,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catelogue_Product", Storage="_Products", ThisKey="Id", OtherKey="CatelogueId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalogue_Product", Storage="_Products", ThisKey="Id", OtherKey="CatelogueId")]
 		public EntitySet<Product> Products
 		{
 			get
@@ -488,7 +488,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertySubCatelogue_Property", Storage="_Properties", ThisKey="Id", OtherKey="SubCatelogueId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertySubCatalogue_Property", Storage="_Properties", ThisKey="Id", OtherKey="SubCatelogueId")]
 		public EntitySet<Property> Properties
 		{
 			get
@@ -980,7 +980,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatelogue_New", Storage="_NewsCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatalogue_New", Storage="_NewsCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
 		public NewsCatalogue NewsCatalogue
 		{
 			get
@@ -1035,7 +1035,7 @@ namespace Showroom.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.NewsCatelogue")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.NewsCatalogue")]
 	public partial class NewsCatalogue : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1175,7 +1175,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatelogue_New", Storage="_News", ThisKey="Id", OtherKey="CatelogueId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatalogue_New", Storage="_News", ThisKey="Id", OtherKey="CatelogueId")]
 		public EntitySet<New> News
 		{
 			get
@@ -1477,7 +1477,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catelogue_Product", Storage="_Catelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalogue_Product", Storage="_Catelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
 		public Catalogue Catalogue
 		{
 			get
@@ -1975,7 +1975,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertySubCatelogue_Property", Storage="_PropertySubCatelogue", ThisKey="SubCatelogueId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertySubCatalogue_Property", Storage="_PropertySubCatelogue", ThisKey="SubCatelogueId", OtherKey="Id", IsForeignKey=true)]
 		public PropertySubCatalogue PropertySubCatalogue
 		{
 			get
@@ -2009,7 +2009,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertyCatelogue_Property", Storage="_PropertyCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertyCatalogue_Property", Storage="_PropertyCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
 		public PropertyCatalogue PropertyCatalogue
 		{
 			get
@@ -2076,7 +2076,7 @@ namespace Showroom.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.PropertyCatelogue")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.PropertyCatalogue")]
 	public partial class PropertyCatalogue : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -2192,7 +2192,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertyCatelogue_Property", Storage="_Properties", ThisKey="Id", OtherKey="CatelogueId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertyCatalogue_Property", Storage="_Properties", ThisKey="Id", OtherKey="CatelogueId")]
 		public EntitySet<Property> Properties
 		{
 			get
