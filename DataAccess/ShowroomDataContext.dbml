@@ -11,7 +11,7 @@
       <Association Name="Catalogue_Product" Member="Products" ThisKey="Id" OtherKey="CatelogueId" Type="Product" />
     </Type>
   </Table>
-  <Table Name="sunrise_admin.PropertySubCatelogue" Member="PropertySubCatalogues">
+  <Table Name="sunrise_admin.PropertySubCatalogue" Member="PropertySubCatalogues">
     <Type Name="PropertySubCatalogue">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />

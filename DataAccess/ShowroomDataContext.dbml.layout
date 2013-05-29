@@ -70,28 +70,28 @@
         <classShapeMoniker Id="bd37a939-0651-4758-8dfc-7063e8f4757d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.75 : 5.38544840494792); (9.5 : 5.38544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.75 : 5.38544840494792); (9.5 : 5.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ShowroomDataContext/NewsCatalogue/NewsCatalogue_New" />
       <nodes>
         <classShapeMoniker Id="852ed131-7e34-4a77-b067-2555acbd934d" />
         <classShapeMoniker Id="439c5579-781f-4b74-8460-8c7c1716f423" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.10659912109375); (3.5 : 9.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 9.10659912109375); (3.5 : 9.10659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ShowroomDataContext/Catalogue/Catalogue_Product" />
       <nodes>
         <classShapeMoniker Id="07f75a85-b452-4dea-9717-478ff7c3da12" />
         <classShapeMoniker Id="83b5b22f-d640-4b1a-8585-81b46ca9a122" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.16429768880208); (3.5 : 2.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 2.16429768880208); (3.5 : 2.16429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ShowroomDataContext/PropertySubCatalogue/PropertySubCatalogue_Property" />
       <nodes>
         <classShapeMoniker Id="fa42483c-e6f2-4e10-ab98-165ef246b463" />
         <classShapeMoniker Id="5ae654f8-8b39-483e-a4d3-c29f841ba5da" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.16429768880208); (4.5 : 6.16429768880208); (4.5 : 3.34780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.16429768880208); (4.5 : 6.16429768880208); (4.5 : 3.34780110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ShowroomDataContext/PropertyCatalogue/PropertyCatalogue_Property" />
       <nodes>
         <classShapeMoniker Id="2ac95b2e-2ea0-4599-9d02-2972c2f77990" />
