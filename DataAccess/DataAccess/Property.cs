@@ -26,12 +26,29 @@ namespace Showroom.Models.DataAccess
             }
         }
 
+
+        public List<Property> GetPropertyOFProduct(int ProductID)
+        {
+            try
+            {
+                var item = from p in _dataContext.Properties
+                           where p.Id == ProductID
+                           select p;                
+                return item.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         /// <summary>
         /// Lấy thông tin của 1 thuộc tính sản phẩm
         /// </summary>
         /// <param name="id">Mã thuộc tính sản phẩm</param>
         /// <returns></returns>
-        public Property GetPropertyInfo(int id)
+        public Property GetPropertyVualue(int id)
         {
             try
             {
