@@ -50,10 +50,11 @@
             <!-----------------------END MENU LEFT----------------------------->
 
             <!-----------------------XE THEO CATEGORIES--------------------------->
-            <div class="titleSearchBox">
+
+            <div class="row" id="boxNewProduct">
+                            <div class="titleSearchBox">
                 <span> Sản phẩm </span>
             </div>
-            <div class="row" id="boxNewProduct">
                 @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductByCatalogue)
                 {
                     <div class="span3">
@@ -61,12 +62,12 @@
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                     <div class="zoom-icons">
-                                        <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="zoom-img" href="/images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
                                         <a class="link-img" href="/Product/Details/@m.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
                                 <div class="mosaic-backdrop">
-                                    <img class="max-image" src="images/portfolio/kia.jpg" alt="">
+                                    <img class="max-image" src="/images/portfolio/kia.jpg" alt="">
                                 </div>
                             </div>
                             <div class="port3-head">

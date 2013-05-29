@@ -45,6 +45,9 @@ namespace Frontend.Controllers
                                              Value = p.Id.ToString(),
                                              Text = p.Name,
                                          }).ToList();
+
+            // Danh sách dữ liệu danh mục
+            ViewBag.CataloguesList = rep.GetProductCatalogueList();
             var ProductByCatalogue = rep.GetListProductSame(id);
             ViewBag.ProductByCatalogue = ProductByCatalogue;
             return View();

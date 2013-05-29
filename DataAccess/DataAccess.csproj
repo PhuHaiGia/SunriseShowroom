@@ -47,6 +47,7 @@
     <Compile Include="DataAccess\Contact.cs" />
     <Compile Include="DataAccess\News.cs" />
     <Compile Include="DataAccess\NewsCatalogue.cs" />
+    <Compile Include="DataAccess\ProductProperty.cs" />
     <Compile Include="DataAccess\Property.cs" />
     <Compile Include="DataAccess\PropertyCatalogue.cs" />
     <Compile Include="DataAccess\PropertySubCatalogue.cs" />
