@@ -1,6 +1,25 @@
-﻿@{
+﻿@model Showroom.Models.Product
+@using Showroom.Models.DataAccess;
+@{
+    ShowroomRepository rep = new ShowroomRepository();
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
+    List<Showroom.Models.PropertySubCatalogue> PropertySubCatalogueList = ViewBag.PropertySubCatalogueList;
+    List<Showroom.Models.ProductProperty> ProductProperty = ViewBag.ProductPropertyList;
+    List<Showroom.Models.Property> PropertyList = ViewBag.PropertyList;
+    
+    // Lấy những thuộc tính của sản phẩm được ShowMain
+    var PropertyOnMain = (from n in ProductProperty
+                          from p in PropertyList
+                          where p.ShowMain == 'A' && n.PropertyId == Model.Id
+                          select new
+                          {
+                              Name = p.Name,
+                              Value = n.Value
+                          } 
+                          ).ToList();                                   
+                                              
 }
 
 <section>
@@ -57,74 +76,24 @@
                     </div>
                 </div>
                 <div class="span5">
-                    <h3>Kia morning</h3>
+                    <h3>@Model.Name</h3>
                     <ul class="sidebar-post">
                         <li>
                             <div class="row">
-                                <div class="span2 blod">Xuất xứ:</div>
-                                <div class="span3">Trong nước</div>
+                                <div class="span2 blod">Giá:</div>
+                                <div class="span3">@Model.Price</div>
                             </div>
                         </li>
                         <li>
+                            @foreach(var sm in  PropertyOnMain)
+                            {
                             <div class="row">
-                                <div class="span2 blod">Năm sản xuất:</div>
-                                <div class="span3">2010</div>
+                                <div class="span2 blod">@sm.Name</div>
+                                <div class="span3">@sm.Value</div>
                             </div>
+                            }
                         </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Hãng sản xuất:</div>
-                                <div class="span3">Xe Huyndai</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Tình trạng xe:</div>
-                                <div class="span3">Xe cũ</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Hộp số:</div>
-                                <div class="span3">Số tay</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Nhiên liệu:</div>
-                                <div class="span3">Xăng</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Dẫn động:</div>
-                                <div class="span3">FWD Hai bánh trước</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Bảo hành:</div>
-                                <div class="span3">12</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Giá bán:</div>
-                                <div class="span3">Liên hệ</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Liên hệ:</div>
-                                <div class="span3">MR. Nguyên</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="span2 blod">Điện thoại:</div>
-                                <div class="span3">0989888888</div>
-                            </div>
-                        </li>
+
                         <li></li>
                     </ul>
                 </div>
@@ -134,95 +103,74 @@
                 <div class="span12">
                     <div class="service-wrap">
                         <ul class="tab-menu tab-blue round">
-                            <li class="active"><a href="#tab1"><i class="icon-tag"></i>Thông số cơ bản</a></li>
-                            <li><a href="#tab2"><i class="icon-tag"></i>Thông số an toàn</a></li>
-                            <li><a href="#tab3"><i class="icon-tag"></i>Tiện nghi</a></li>
-                            <li><a href="#tab4"><i class="icon-tag"></i>Thông số kỹ thuật</a></li>
-                            <li><a href="#tab5"><i class="icon-tag"></i>Hình ảnh</a></li>
+                            @for (int i = 0; i < PropertyCatalogueList.Count; i++)
+                            {
+                                string strClassActive = "";
+                                if (i == 0)
+                                {
+                                    strClassActive = "active";
+                                }
+                                var tabId = "#tab" + PropertyCatalogueList[i].Id;
+                                string StrName = PropertyCatalogueList[i].Name.ToString();  
+                                <li class="@strClassActive"><a href="@tabId" ><i class="icon-tag"></i>@StrName</a></li>
+                            }
+@*                            @foreach (var item in PropertyCatalogueList)
+                            {
+                                var tabId = "#tab" + item.Id;        
+                                <li class="@strClassActive"><a href="@tabId" ><i class="icon-tag"></i>@item.Name</a></li>
+                            }*@
                         </ul>
                         <div class="shadow-wrapper">
                             <div class="tab-container">
-                                <div style="display: block;" class="tab-content-1 span11" id="tab1">
-                                    <div class="span5">
-                                        <h3>Các thông số cơ bản</h3>
-                                        <ul class="sidebar-post">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Màu xe:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Màu nội thất:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Số cửa:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Số chỗ ngồi:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li></li>
-                                        </ul>
+                                @for(int x = 0; x < PropertyCatalogueList.Count;x++)
+                                {
+                                    var tabId = "#tab" + PropertyCatalogueList[x].Id;
+                                    var ID = PropertyCatalogueList[x].Id;
+                                    string strStatus = "";
+                                    if (x == 0)
+                                    {
+                                        strStatus = "block";
+                                    }
+                                    var GroupPropertyList = (from p in PropertyList
+                                                             from n in PropertySubCatalogueList
+                                                             where p.CatelogueId == ID && p.SubCatelogueId == n.Id
+                                                             select new
+                                                             {
+                                                                 Id = n.Id,
+                                                                 Name = n.Name
+                                                             }
+                                                             ).ToList();
+                                    
+                                    <div style="display: @strStatus;" class="tab-content-1 span11" id="@tabId">
+                                        @foreach (var subitem in GroupPropertyList)
+                                        {
+                                            var lst = (from n in ProductProperty
+                                                       from p in PropertyList
+                                                       where p.SubCatelogueId == subitem.Id && p.CatelogueId == ID && n.PropertyId == p.Id
+                                                       select new{
+                                                           Name = p.Name,
+                                                           Value = n.Value                                                         
+                                                       }).ToList();
+                                            <div class="span5">
+                                                <h3>@subitem.Name</h3>
+                                                <ul class="sidebar-post">
+                                                    <li>
+                                                        <div class="row">
+                                                            @foreach (var s in lst)
+                                                            {
+                                                                <div class="span2 blod">@s.Name</div>
+                                                                <div class="span3">@s.Value</div>
+                                                            }
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        }
                                     </div>
-                                    <div class="span5">
-                                        <h3>Nhiên liệu</h3>
-                                        <ul class="sidebar-post">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Màu xe:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Màu nội thất:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Số cửa:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Số chỗ ngồi:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                    <div class="span5">
-                                        <h3>Hộp số chuyển động</h3>
-                                        <ul class="sidebar-post">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Xuất xứ:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="span2 blod">Xuất xứ:</div>
-                                                    <div class="span3">Trong nước</div>
-                                                </div>
-                                            </li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div style="display: none;" class="tab-content-1 span11" id="tab2">
+                                }
+                                @*                                <div style="display: none;" class="tab-content-1 span11" id="tab2">
                                     <div class="span5">
                                         <h3>Túi khí an toàn</h3>
                                         <ul class="sidebar-post">
@@ -501,7 +449,7 @@
                                             <li></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -514,13 +462,15 @@
                         <span>SẢN PHẨN CÙNG LOẠI</span>
                     </div>
                     <div class="row" id="boxNewProduct">
+                        @foreach (var productS in rep.GetListProductSame(@Model.CatelogueId))
+                        {
                         <div class="span3">
                             <div class="shadow-wrapper">
                                 <div class="mosaic-block faded">
                                     <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                         <div class="zoom-icons">
                                             <a class="zoom-img" href="/images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                            <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                            <a class="link-img" href="/Product/Details/@Model.Id"><i class="icon-link"></i></a>
                                         </div>
                                     </div>
                                     <div class="mosaic-backdrop">
@@ -528,106 +478,12 @@
                                     </div>
                                 </div>
                                 <div class="port3-head">
-                                    <h3><a href="#">Xe Kia -FLS</a></h3>
-                                    <p>Giá:10.000 $</p>
+                                    <h3><a href="/Product/Details/@Model.Id">@productS.Name</a></h3>
+                                    <p>Giá: @Convert.ToDouble(productS.Price).ToString("N0").Replace(",", ".")</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="span3">
-                            <div class="shadow-wrapper">
-                                <div class="mosaic-block faded">
-                                    <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                        <div class="zoom-icons">
-                                            <a class="zoom-img" href="/images/portfolio/mazda.png" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                            <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="mosaic-backdrop">
-                                        <img class="max-image" src="/images/portfolio/mazda.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="port3-head">
-                                    <h3><a href="#">Xe Mazda</a></h3>
-                                    <p>Giá:15.000 $</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span3">
-                            <div class="shadow-wrapper">
-                                <div class="mosaic-block faded">
-                                    <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                        <div class="zoom-icons">
-                                            <a class="zoom-img" href="/images/portfolio/hyundai.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                            <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="mosaic-backdrop">
-                                        <img class="max-image" src="/images/portfolio/hyundai.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="port3-head">
-                                    <h3><a href="#">Hyndai Tubo</a></h3>
-                                    <p>Giá:25.000 $</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span3">
-                            <div class="shadow-wrapper">
-                                <div class="mosaic-block faded">
-                                    <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                        <div class="zoom-icons">
-                                            <a class="zoom-img" href="/images/portfolio/daiwo.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                            <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="mosaic-backdrop">
-                                        <img class="max-image" src="/images/portfolio/daiwo.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="port3-head">
-                                    <h3><a href="#">Daewoo KS</a></h3>
-                                    <p>Giá:25.000 $</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span3">
-                            <div class="shadow-wrapper">
-                                <div class="mosaic-block faded">
-                                    <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                        <div class="zoom-icons">
-                                            <a class="zoom-img" href="/images/portfolio/hyundai.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                            <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="mosaic-backdrop">
-                                        <img class="max-image" src="/images/portfolio/hyundai.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="port3-head">
-                                    <h3><a href="#">Hyundai F1</a></h3>
-                                    <p>Giá:25.000 $</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span3">
-                            <div class="shadow-wrapper">
-                                <div class="mosaic-block faded">
-                                    <div class="mosaic-overlay" style="display: block; opacity: 0;">
-                                        <div class="zoom-icons">
-                                            <a class="zoom-img" href="/images/portfolio/mazda.png" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                            <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="mosaic-backdrop">
-                                        <img class="max-image" src="/images/portfolio/mazda.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="port3-head">
-                                    <h3><a href="#">Hyundai F1</a></h3>
-                                    <p>Giá:25.000 $</p>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
 
