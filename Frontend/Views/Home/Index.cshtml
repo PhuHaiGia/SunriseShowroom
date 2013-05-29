@@ -1,10 +1,10 @@
-﻿@{
+﻿\@{
     ViewBag.Title = "Index";
 }
 
 <div class="boderB">
     <!-- SLIDE -->
-    @Html.Partial("~/Views/Shared/_Slide.cshtml");
+    @Html.Partial("~/Views/Shared/_Slide.cshtml")
     <!-- END SLIDE -->
 
     <!-- NỘI DUNG TRANG CHỦ-->
@@ -19,7 +19,7 @@
                     </div>
                     <ul class="searchtool hide" id="searchtool">
                         <li>
-                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueList)
+                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueListDrop)
                         </li>
                         <li>
                             <select>
@@ -43,13 +43,10 @@
                         <span>SIÊU THỊ XE</span>
                     </div>
                     <ul class="leftnav bullets-style blue  arrow-list">
-                        <li>Kia morning</li>
-                        <li>Kia morning</li>
-                        <li>Kia morning</li>
-                        <li>Kia morning</li>
-                        <li>Kia morning</li>
-                        <li>Kia morning</li>
-                        <li>Kia morning</li>
+                        @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
+                        {
+                        <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -64,7 +61,7 @@
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                     <div class="zoom-icons">
                                         <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                        <a class="link-img" href="/Product/Details"><i class="icon-link"></i></a>
+                                        <a class="link-img" href="/Product/Details/@m.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
                                 <div class="mosaic-backdrop">
@@ -72,8 +69,8 @@
                                 </div>
                             </div>
                             <div class="port3-head">
-                                <h3><a href="/Product/Details">@m.Name</a></h3>
-                                <p>Giá:10.000 $</p>
+                                <h3><a href="/Product/Details/@m.Id">@m.Name</a></h3>
+                                <p>Giá:@Convert.ToDouble(m.Price).ToString("N0").Replace(",", ".")</p>
                             </div>
                         </div>
                     </div>
