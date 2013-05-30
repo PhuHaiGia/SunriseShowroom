@@ -10,7 +10,7 @@ namespace Frontend.Controllers
     public class ProductController : Controller
     {
         ShowroomRepository rep = new ShowroomRepository();
-
+        int maxProductInPage = 3;
         //
         // GET: /Product/
 
@@ -36,7 +36,7 @@ namespace Frontend.Controllers
            return View(model);
         }
 
-        public ActionResult Product(int id)
+        public ActionResult Product(int id, int page)
         {
             var list = rep.GetProductCatalogueList();
             ViewBag.CatalogueListDrop = (from p in list
@@ -49,6 +49,9 @@ namespace Frontend.Controllers
             // Danh sách dữ liệu danh mục
             ViewBag.CataloguesList = rep.GetProductCatalogueList();
             var ProductByCatalogue = rep.GetListProductSame(id);
+            ViewBag.MaxPage = ProductByCatalogue.Count();
+            ViewBag.Id = id;
+            ProductByCatalogue = ProductByCatalogue.Skip(maxProductInPage * (page-1)).Take(maxProductInPage).ToList();
             ViewBag.ProductByCatalogue = ProductByCatalogue;
             return View();
         }

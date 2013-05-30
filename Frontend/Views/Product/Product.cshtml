@@ -1,13 +1,23 @@
 ﻿@{
     ViewBag.Title = "Product";
     List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
+    int maxPage = ViewBag.MaxPage;
+    int CatalogueId = ViewBag.Id;
+    <style type="text/css">
+        .wrapTitle {
+            background: #fff;
+            line-height: 40px;
+        }
+    </style>
+    
 }
 
 <div class="boderB">
+
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
         <div class="container">
-            
+
             <!-----------------------MENU LEFT--------------------------------->
             <div class="colLeft span3 fleft">
                 <div class="shadow-wrapper searchtitle" id="searchbox">
@@ -16,7 +26,7 @@
                     </div>
                     <ul class="searchtool hide" id="searchtool">
                         <li>
-                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueListDrop)
+                            @Html.DropDownList("listCatalogue", (IList<SelectListItem>)ViewBag.CatalogueListDrop)
                         </li>
                         <li>
                             <select>
@@ -42,7 +52,7 @@
                     <ul class="leftnav bullets-style blue  arrow-list">
                         @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
                         {
-                        <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
+                            <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -50,11 +60,12 @@
             <!-----------------------END MENU LEFT----------------------------->
 
             <!-----------------------XE THEO CATEGORIES--------------------------->
-
-            <div class="row" id="boxNewProduct">
-                            <div class="titleSearchBox">
-                <span> Sản phẩm </span>
+            <div class="wrapTitle">
+                <div class="span9" style="background: #0083B7; line-height: 20px;">
+                    <span>Sản phẩm</span>
+                </div>
             </div>
+            <div class="row" id="boxNewProduct">
                 @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductByCatalogue)
                 {
                     <div class="span3">
@@ -79,7 +90,13 @@
                 }
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
-
+            <div class="pagination">
+                <a href="#"><i class="icon-chevron-left"></i></a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="icon-chevron-right"></i></a>
+            </div>
         </div>
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->
