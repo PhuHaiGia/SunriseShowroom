@@ -45,7 +45,7 @@
                     <ul class="leftnav bullets-style blue  arrow-list">
                         @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
                         {
-                        <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
+                        <li><a href="/Product/Product?id=@c.Id&page=1">@c.Name</a></li>
                         }
                     </ul>
                 </div>

@@ -3,6 +3,8 @@
     List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
     int maxPage = ViewBag.MaxPage;
     int CatalogueId = ViewBag.Id;
+    int CurrenPage = ViewBag.Curenpage;
+    
     <style type="text/css">
         .wrapTitle {
             background: #fff;
@@ -90,13 +92,20 @@
                 }
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
+                @*@RenderPage("~/macroScripts/Shared/_Page.cshtml", new { PageIdx = pageIndex, ListCount = maxPage, PostPerPage = maxProductInPage })*@
             <div class="pagination">
-                <a href="#"><i class="icon-chevron-left"></i></a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#"><i class="icon-chevron-right"></i></a>
-            </div>
+                
+                @for (int i = CurrenPage-1;( i >0 && i>=CurrenPage-2); i--)
+                {
+                    var query = "/Product/Product?id=" + CatalogueId + "&page=" + i;
+                    <a href="@query">@i</a>
+                }
+                @for (int i = CurrenPage;( i <= maxPage && i <= CurrenPage+2); i++)
+                {
+                    var query = "/Product/Product?id=" + CatalogueId + "&page=" + i;
+                    <a href="@query">@i</a>
+                }
+                </div>   
         </div>
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->

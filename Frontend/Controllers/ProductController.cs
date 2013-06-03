@@ -49,8 +49,9 @@ namespace Frontend.Controllers
             // Danh sách dữ liệu danh mục
             ViewBag.CataloguesList = rep.GetProductCatalogueList();
             var ProductByCatalogue = rep.GetListProductSame(id);
-            ViewBag.MaxPage = ProductByCatalogue.Count();
+            ViewBag.MaxPage = ProductByCatalogue.Count()/3;
             ViewBag.Id = id;
+            ViewBag.Curenpage = page;
             ProductByCatalogue = ProductByCatalogue.Skip(maxProductInPage * (page-1)).Take(maxProductInPage).ToList();
             ViewBag.ProductByCatalogue = ProductByCatalogue;
             return View();
