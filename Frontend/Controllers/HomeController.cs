@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
-using Frontend.Models;
+using Showroom.Models;
 
 namespace Frontend.Controllers
 {
@@ -24,6 +24,26 @@ namespace Frontend.Controllers
                                      }).ToList();
             //model.listCatalogue = rep
             ViewBag.ProductList = rep.GetProductsList();
+            return View();
+        }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Insert New Contact
+        /// Author: ThuanNH
+        /// </summary>
+        /// <param name="models"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Search(Contact models)
+        {
+            models.PostDate = DateTime.Now;
+            models.Actflg = '1';
+            rep.InsertContacts(models);
             return View();
         }
 
