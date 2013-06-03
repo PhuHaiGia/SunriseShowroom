@@ -1,7 +1,9 @@
-﻿@{
-    ViewBag.Title = "Danh mục nhóm sản phẩm";
+﻿@model List<Showroom.Models.Catalogue>
+
+@{
+    ViewBag.Title = "Danh mục hãng sản xuất";
 }
-@ViewBag IQueryable<Showroom.Models.Catalogue>
+
 <!-- dataTables -->
 <script src="@Url.Content("~/Scripts/plugins/datatable/jquery.dataTables.min.js")"></script>
 <script src="@Url.Content("~/Scripts/plugins/datatable/TableTools.min.js")"></script>
@@ -16,177 +18,39 @@
 <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/chosen/chosen.css")">
 <!-- End Style-->
 <div class="box box-bordered">
-    <div class="box-title">
-        <h3>
-            <i class="icon-table"></i>
-            Table with tools (excel export etc.)
-        </h3>
-    </div>
     <div class="box-content nopadding">
-        <table class="table table-nomargin dataTable dataTable-tools table-bordered">
+        <table class="table table-nomargin dataTable table-bordered">
             <thead>
                 <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th class='hidden-350'></th>
-                    <th class='hidden-1024'>Engine version</th>
-                    <th class='hidden-480'>CSS grade</th>
-                    <th class='hidden-480'>Công cụ</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Id)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Name)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.NameEn)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Image)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Actflg)</th>
+                    <th>Công cụ</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in ViewBag)
+                @foreach (var item in Model)
                 {
                 <tr>
-                    <td></td>
-                    <td>Internet
-												Explorer 4.0
-                    </td>
-                    <td class='hidden-350'>Win 95+</td>
-                    <td class='hidden-1024'>4</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td> 
+                    <td>@item.NameEn</td>
+                    <td>@item.Image</td>
+                    <td>@item.Actflg</td>
+                    <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="DeleteCatalogue(@item.Id)" >Xóa</a></td>
                 </tr>
                 }
-                <tr>
-                    <td>Presto</td>
-                    <td>Nokia N800</td>
-                    <td class='hidden-350'>N800</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>A</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>NetFront 3.4</td>
-                    <td class='hidden-350'>Embedded devices</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>A</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>Dillo 0.8</td>
-                    <td class='hidden-350'>Embedded devices</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>Links</td>
-                    <td class='hidden-350'>Text only</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td class='hidden-350'>Text only</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>IE Mobile</td>
-                    <td class='hidden-350'>Windows Mobile 6</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>C</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>PSP browser</td>
-                    <td class='hidden-350'>PSP</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>C</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td class='hidden-350'>-</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>U</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Trident</td>
-                    <td>Internet
-												Explorer 4.0
-                    </td>
-                    <td class='hidden-350'>Win 95+</td>
-                    <td class='hidden-1024'>4</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Presto</td>
-                    <td>Nokia N800</td>
-                    <td class='hidden-350'>N800</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>A</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>NetFront 3.4</td>
-                    <td class='hidden-350'>Embedded devices</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>A</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>Dillo 0.8</td>
-                    <td class='hidden-350'>Embedded devices</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>Links</td>
-                    <td class='hidden-350'>Text only</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td class='hidden-350'>Text only</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>X</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>IE Mobile</td>
-                    <td class='hidden-350'>Windows Mobile 6</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>C</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Misc</td>
-                    <td>PSP browser</td>
-                    <td class='hidden-350'>PSP</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>C</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
-                <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td class='hidden-350'>-</td>
-                    <td class='hidden-1024'>-</td>
-                    <td class='hidden-480'>U</td>
-                    <td class='hidden-480'>Sửa - Xóa</td>
-                </tr>
             </tbody>
         </table>
     </div>
 </div>
+<script type="text/javascript">
+    function DeleteCatalogue(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa bản ghi này ?')) {
+            window.location = '/Catalogue/Delete?id=' + id ;
+        }
+    };
+
+</script>

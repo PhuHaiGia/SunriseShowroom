@@ -4,13 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace Showroom.Models.Models
+namespace Showroom.Models
 {
     [MetadataType(typeof(Catalogue.CatalogueMetadata))]
     public partial class Catalogue
     {
         internal sealed class CatalogueMetadata
         {
+            [Display(Name = "Mã")]
+            public int Id { get; set; }
+
             [Required(ErrorMessage = "Bạn phải nhập tên danh mục.")]
             [Display(Name = "Tên")]
             [StringLength(100)]

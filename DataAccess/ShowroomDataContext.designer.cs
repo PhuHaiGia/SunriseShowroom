@@ -372,7 +372,7 @@ namespace Showroom.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.PropertySubCatelogue")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.PropertySubCatalogue")]
 	public partial class PropertySubCatalogue : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		

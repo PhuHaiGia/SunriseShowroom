@@ -95,6 +95,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\HtmlHelperDisplayNameExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -298,6 +299,7 @@
     <Content Include="Content\img\plugins\plupload\Descr.WD3" />
     <Content Include="Content\img\plugins\xeditable\Descr.WD3" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Images\Catalogue\mobiphone.png" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -397,6 +399,8 @@
     <Content Include="Views\Shared\_NavigationPartial.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Catalogue\Index.cshtml" />
+    <Content Include="Views\Catalogue\Edit.cshtml" />
+    <Content Include="Views\Contact\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

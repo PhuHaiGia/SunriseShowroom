@@ -16,13 +16,15 @@ namespace Frontend.Controllers
         {
             ViewBag.Message = "Home Showroom car";
             var list = rep.GetProductCatalogueList();
-            ViewBag.CatalogueList = (from p in list
+            ViewBag.CatalogueListDrop = (from p in list
                                      select new SelectListItem
                                      {
                                          Value=p.Id.ToString(),
                                          Text=p.Name,
                                      }).ToList();
-            //model.listCatalogue = rep
+            // Danh sách dữ liệu danh mục
+            ViewBag.CataloguesList = rep.GetProductCatalogueList();
+            // Danh sách dữ liệu sản phẩm
             ViewBag.ProductList = rep.GetProductsList();
             return View();
         }

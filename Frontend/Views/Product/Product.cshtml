@@ -1,16 +1,23 @@
-﻿\@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Product";
+    List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
+    int maxPage = ViewBag.MaxPage;
+    int CatalogueId = ViewBag.Id;
+    <style type="text/css">
+        .wrapTitle {
+            background: #fff;
+            line-height: 40px;
+        }
+    </style>
+    
 }
 
 <div class="boderB">
-    <!-- SLIDE -->
-    @Html.Partial("~/Views/Shared/_Slide.cshtml")
-    <!-- END SLIDE -->
 
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
         <div class="container">
-            
+
             <!-----------------------MENU LEFT--------------------------------->
             <div class="colLeft span3 fleft">
                 <div class="shadow-wrapper searchtitle" id="searchbox">
@@ -19,7 +26,7 @@
                     </div>
                     <ul class="searchtool hide" id="searchtool">
                         <li>
-                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueListDrop)
+                            @Html.DropDownList("listCatalogue", (IList<SelectListItem>)ViewBag.CatalogueListDrop)
                         </li>
                         <li>
                             <select>
@@ -45,27 +52,33 @@
                     <ul class="leftnav bullets-style blue  arrow-list">
                         @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
                         {
-                        <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
+                            <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
                         }
                     </ul>
                 </div>
             </div>
             <!-----------------------END MENU LEFT----------------------------->
 
-            <!-----------------------XE MỚI CẬP NHẬT--------------------------->
+            <!-----------------------XE THEO CATEGORIES--------------------------->
+            <div class="wrapTitle">
+                <div class="span9" style="background: #0083B7; line-height: 20px;">
+                    <span>Sản phẩm</span>
+                </div>
+            </div>
             <div class="row" id="boxNewProduct">
-                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductByCatalogue)
+                {
                     <div class="span3">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                     <div class="zoom-icons">
-                                        <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="zoom-img" href="/images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
                                         <a class="link-img" href="/Product/Details/@m.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
                                 <div class="mosaic-backdrop">
-                                    <img class="max-image" src="images/portfolio/kia.jpg" alt="">
+                                    <img class="max-image" src="/images/portfolio/kia.jpg" alt="">
                                 </div>
                             </div>
                             <div class="port3-head">
@@ -77,32 +90,13 @@
                 }
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
-
-            <!-----------------------------PARTNER----------------------------->
-            <div id="Partner">
-                <div class="image_carousel">
-                    <div id="foo2">
-                        <img src="images/partner/basketball.jpg" alt="basketball" width="140" height="140" />
-                        <img src="images/partner/beachtree.jpg" alt="beachtree" width="140" height="140" />
-                        <img src="images/partner/cupcackes.jpg" alt="cupcackes" width="140" height="140" />
-                        <img src="images/partner/hangmat.jpg" alt="hangmat" width="140" height="140" />
-                        <img src="images/partner/new_york.jpg" alt="new york" width="140" height="140" />
-                        <img src="images/partner/laundry.jpg" alt="laundry" width="140" height="140" />
-                        <img src="images/partner/mom_son.jpg" alt="mom son" width="140" height="140" />
-                        <img src="images/partner/picknick.jpg" alt="picknick" width="140" height="140" />
-                        <img src="images/partner/shoes.jpg" alt="shoes" width="140" height="140" />
-                        <img src="images/partner/paris.jpg" alt="paris" width="140" height="140" />
-                        <img src="images/partner/sunbading.jpg" alt="sunbading" width="140" height="140" />
-                        <img src="images/partner/yellow_couple.jpg" alt="yellow couple" width="140" height="140" />
-                    </div>
-                    <div class="clearfix"></div>
-                    <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
-                    <a class="next" id="foo2_next" href="#"><span>next</span></a>
-                    <div class="pagination" id="foo2_pag"></div>
-                </div>
+            <div class="pagination">
+                <a href="#"><i class="icon-chevron-left"></i></a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="icon-chevron-right"></i></a>
             </div>
-            <!----------------------------- END PARTNER----------------------------->
-
         </div>
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->
